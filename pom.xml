@@ -58,6 +58,7 @@
 					 </dependency>
 			    </dependencies>
 			    <configuration>
+					<!-- Ensure more than the below number percentage passes -->
 			     	<mutationThreshold>55</mutationThreshold>
 			     	<outputFormats>
 			             <outputFormat>XML</outputFormat>
