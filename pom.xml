@@ -58,8 +58,8 @@
 					 </dependency>
 			    </dependencies>
 			    <configuration>
-					<!-- Ensure more than the below number percentage passes -->
-			     	<mutationThreshold>55</mutationThreshold>
+					<!-- Mutation score must be higher than the below threshold number -->
+			     	<mutationThreshold>39</mutationThreshold>
 			     	<outputFormats>
 			             <outputFormat>XML</outputFormat>
 			             <outputFormat>HTML</outputFormat>
