@@ -29,6 +29,16 @@ pipeline {
             }
           }
       }
+      stage('SonarQube - STAT') {
+        stpes {
+          sh "mvn clean verify sonar:sonar \
+              -Dsonar.projectKey=numeric-application \
+              -Dsonar.projectName='numeric-application' \
+              -Dsonar.host.url=http://devsecops-westus.westus.cloudapp.azure.com:9000 \
+              -Dsonar.token=sqp_4cfe3f37ba55e2d9a79b9b2992cb64e4feed2378"
+          }
+      }
+
       stage('Docker Build and Push') {
         steps {
           withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
