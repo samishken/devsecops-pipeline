@@ -31,8 +31,15 @@ pipeline {
       }
       stage('SonarQube - STAT') {
         steps {
+          withSonarQubeEnv('SonarQube') {
             sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.projectName='numeric-application' -Dsonar.host.url=http://devsecops-westus.westus.cloudapp.azure.com:9000 -Dsonar.token=sqp_4cfe3f37ba55e2d9a79b9b2992cb64e4feed2378"
-        }
+          }
+          timeout(time: 2, unit: 'MINUTES'){
+            script {
+              waitForQualityGate abortPipeline: true
+            }
+          }
+        }    
       }
       stage('Docker Build and Push') {
         steps {
