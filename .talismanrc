@@ -1,5 +1,1 @@
-fileignoreconfig:
-- filename: sec_files/file2
-  checksum: dac5999507777d690f1ad5ac45ff0847e55a68ba9259c41d8040108cf4b6fe55
-- filename: sec_files/file3
-  checksum: 618bbe1ad36dcaee23a15ebcc7553aaee921db48a3bd0970638dd7ff34458f8c
+
