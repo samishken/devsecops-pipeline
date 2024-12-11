@@ -7,13 +7,12 @@ pipeline {
           sh 'echo "Hello World"'
         }
       }
-  }
-      // stage('Build Artifact') {
-      //   steps {
-      //     sh "mvn clean package -DskipTests=true"
-      //     archive 'target/*.jar' 
-      //   }
-      // } 
+      stage('Build Artifact') {
+        steps {
+          sh "mvn clean package -DskipTests=true"
+          archive 'target/*.jar' 
+        }
+      } 
       // stage('unit Test') {
       //   steps {
       //     sh 'mvn test'
@@ -75,5 +74,5 @@ pipeline {
     //       }
     //     }
     //   }
-    // }
+  }
 }
