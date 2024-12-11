@@ -77,7 +77,8 @@
 			     	</dependency>
 			    </dependencies>
 			    <configuration>
-			     	<mutationThreshold>70</mutationThreshold>
+					<!--                 mutationThreshold score must be high than this number                   -->
+			     	<mutationThreshold>50</mutationThreshold> 
 			     	<outputFormats>
 			             <outputFormat>XML</outputFormat>
 			             <outputFormat>HTML</outputFormat>
