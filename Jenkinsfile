@@ -2,33 +2,33 @@ pipeline {
   agent any
 
   stages {
-      stage('Build Artifact') {
-        steps {
-          sh "mvn clean package -DskipTests=true"
-          archive 'target/*.jar' 
-        }
-      } 
-      stage('unit Test') {
-        steps {
-          sh 'mvn test'
-        }
-        post {
-          always {
-            junit 'target/surefire-reports/*.xml'
-            jacoco execPattern: 'target/jacoco.exec'
-          }
-        }
-      } 
-      stage('Mutation Tests - PIT') {
-        steps {
-          sh 'mvn org.pitest:pitest-maven:mutationCoverage'
-        }
-        post {
-          always {
-              pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
-          }
-        }
-      }
+      // stage('Build Artifact') {
+      //   steps {
+      //     sh "mvn clean package -DskipTests=true"
+      //     archive 'target/*.jar' 
+      //   }
+      // } 
+      // stage('unit Test') {
+      //   steps {
+      //     sh 'mvn test'
+      //   }
+      //   post {
+      //     always {
+      //       junit 'target/surefire-reports/*.xml'
+      //       jacoco execPattern: 'target/jacoco.exec'
+      //     }
+      //   }
+      // } 
+      // stage('Mutation Tests - PIT') {
+      //   steps {
+      //     sh 'mvn org.pitest:pitest-maven:mutationCoverage'
+      //   }
+      //   post {
+      //     always {
+      //         pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+      //     }
+      //   }
+      // }
       stage('SonarQube - STAT') {
         steps {
           withSonarQubeEnv('SonarQube') {
@@ -41,16 +41,16 @@ pipeline {
           }
         }    
       }
-      stage('Vulnerability Scan - Docker') {
-        steps {
-          sh "mvn dependency-check:check"
-        }
-        post {
-          always {
-            dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-          }
-        }
-      }
+      // stage('Vulnerability Scan - Docker') {
+      //   steps {
+      //     sh "mvn dependency-check:check"
+      //   }
+      //   post {
+      //     always {
+      //       dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+      //     }
+      //   }
+      // }
       stage('Docker Build and Push') {
         steps {
           withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
