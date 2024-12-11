@@ -6,7 +6,8 @@ pipeline {
         steps {
           sh 'echo "Hello World"'
         }
-      
+      }
+  }
       // stage('Build Artifact') {
       //   steps {
       //     sh "mvn clean package -DskipTests=true"
