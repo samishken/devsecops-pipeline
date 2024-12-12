@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   stages {
-      stage('Test-Pipeline') {
+      stage('Test-Start-Pipeline') {
         steps {
           sh 'echo "Hello World"'
         }
@@ -46,9 +46,12 @@ pipeline {
             "Dependency Scan": {
               sh "mvn dependency-check:check"
             },
-              "Trivy Scan":{
+            "Trivy Scan":{
                 sh "bash trivy-docker-image-scan.sh"   // create this script
-            }, 	
+            },
+            "OPA Conftest":{   // Open Policy Agent (OPA) is collection of rules to statically analyze Dockerfiles to improve security
+              sh 'docker run --rm -v $(pwd):/project openpolicyagent/conftest test --policy opa-docker-security.rego Dockerfile'
+			      }  	
       	  ) 
         }
       }
