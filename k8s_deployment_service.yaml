@@ -18,7 +18,7 @@ spec:
       volumes:
       - name: volume
         emptyDir: {}
-      serviceAccountName: default  # default not recommended
+      serviceAccountName: default    # default not recommended
       containers:
       - image: replace
         name: devsecops-container
@@ -28,7 +28,7 @@ spec:
         securityContext:
           runAsNonRoot: true
           runAsUser: 100
-          readOnlyRootFilessystem: true
+          readOnlyRootFilesystem: true
 ---
 apiVersion: v1
 kind: Service
