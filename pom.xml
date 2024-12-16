@@ -93,7 +93,7 @@
                             <version>6.1.6</version>
                             <configuration>
                                 <format>ALL</format>
-                                <failBuildOnCVSS>180</failBuildOnCVSS> <!-- fail the build for CVSS greater than or equal to 181 -->
+                                <failBuildOnCVSS>180</failBuildOnCVSS> <!-- fail the build for CVSS greater than or equal to 181 maven dependency -->
                             </configuration>
                         </plugin>
                 </plugins>
